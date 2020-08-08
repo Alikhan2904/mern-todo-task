@@ -23,8 +23,10 @@ mongoose
     .catch(err => console.log(err));
 
 var Users = require('./routes/Users')
+var Todos = require('./routes/Todos')
 
 app.use('/users', Users);
+app.use('/todos', Todos);
 
 
 app.listen(port, () => {
