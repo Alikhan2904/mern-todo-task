@@ -28,7 +28,7 @@ These commands will install all the packages for you. Now, in order to run the p
 
 ```
 
-npm install
+npm run dev
 
 ```
 
@@ -36,7 +36,7 @@ npm install
 
 ```
 
-npm install
+npm start
 
 ```
 
