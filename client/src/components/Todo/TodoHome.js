@@ -13,12 +13,12 @@ const List = () => {
   const [text, setText] = useState([]);
 
   const fetchTodos = async () => {
-    const res = await fetch('http://localhost:3000/todos/getAll');
+    const res = await fetch('todos/getAll');
     setTodos(await res.json());
   };
 
   const addTodo = async () => {
-    await fetch('http://localhost:3000/todos/create', {
+    await fetch('todos/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -80,14 +80,14 @@ const Item = (props) => {
   const { isCompleted, text, _id } = props.todo;
 
   const deleteTodo = async () => {
-    await fetch(`http://localhost:3000/todos/delete/${_id}`, {
+    await fetch(`todos/delete/${_id}`, {
       method: 'POST',
     });
     props.fetchTodos();
   };
 
   const toggleDone = async () => {
-    await fetch(`http://localhost:3000/todos/complete/${_id}`, {
+    await fetch(`todos/complete/${_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
