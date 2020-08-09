@@ -2,6 +2,15 @@
 
 This is a MERN (MongoDB, Express, React, Noe.js) Stack Todo Application along with Login and Register.
 
+## Demo URL
+
+https://ak-todo-list.herokuapp.com/
+
+## Test Account
+
+email: test@test.com
+password: test123
+
 ## Instructions
 
 To get started, first clone the git repository or download the project zip file. Once the project is downloaded, extract the zip file and follow the steps mentioned below:
