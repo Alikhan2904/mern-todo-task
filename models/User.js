@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-// Create Schema
+// Create user schema which contains first_name, last_name, email and password
 const UserSchema = new Schema({
   first_name: {
     type: String

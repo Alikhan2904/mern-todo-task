@@ -27,6 +27,7 @@ class Profile extends Component {
     })
   }
 
+  // renders the decoded first_name, last_name and email in the UI
   render() {
     return (
       <div className="container">

@@ -7,10 +7,13 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 users.use(cors());
 
+// sets JWT secret
 process.env.SECRET_KEY = 'abc.123';
 
+// logic for registration
 users.post('/register', (req, res) => {
   const today = new Date();
+  // creates the user object using request body and date
   const userData = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -19,11 +22,12 @@ users.post('/register', (req, res) => {
     created: today,
   };
 
+  // checks if any user exists with that email
   User.findOne({
     email: req.body.email,
   })
     .then((user) => {
-      // if there is no existing user with that email
+      // if there is no existing user with that email then create jwt and hash password 
       if (!user) {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           userData.password = hash;
@@ -36,7 +40,7 @@ users.post('/register', (req, res) => {
             });
         });
       } else {
-        // if there is an existing user with that email
+        // if there is an existing user with that email then give error of user already exists
         res.json({ error: 'User already exists' });
       }
     })
@@ -45,12 +49,15 @@ users.post('/register', (req, res) => {
     });
 });
 
+// logic for login
 users.post('/login', (req, res) => {
+  // checks if the email exists in database
   User.findOne({
     email: req.body.email,
   })
     .then((user) => {
       if (user) {
+        // compares both passwords (user provided and the one in database) 
         if (bcrypt.compareSync(req.body.password, user.password)) {
           // Passwords match
           const payload = {
@@ -59,6 +66,7 @@ users.post('/login', (req, res) => {
             last_name: user.last_name,
             email: user.email,
           };
+          // creates jwt token and set expiration time
           let token = jwt.sign(payload, process.env.SECRET_KEY, {
             expiresIn: 1440,
           });
@@ -77,12 +85,14 @@ users.post('/login', (req, res) => {
     });
 });
 
+// logic for user profile
 users.get('/profile', (req, res) => {
   var decoded = jwt.verify(
     req.headers['authorization'],
     process.env.SECRET_KEY
   );
 
+  // finds the user by _id which we got from jwt payload
   User.findOne({
     _id: decoded._id,
   })

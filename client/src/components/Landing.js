@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// This is the landing or welcome page. Class based component is used in it
+
 class Landing extends Component {
   render() {
     return (

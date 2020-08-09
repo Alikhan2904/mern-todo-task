@@ -5,6 +5,7 @@ class Landing extends Component {
   // function to be called on logout
     logOut(e) {
     e.preventDefault()
+    // remove jwt token from local storage
     localStorage.removeItem('usertoken')
     this.props.history.push(`/`)
   }

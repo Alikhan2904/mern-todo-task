@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// This file defines backend api calls logic for authentication
 export const register = (newUser) => {
   // call register backend api endpoint and provide data
     return axios
