@@ -18,7 +18,7 @@ app.use(
 );
 
 const mongoURI =
-  'mongodb+srv://Alikhan:Alikhan29@@mycluster.uhmwd.mongodb.net/ignite-labs-todo?retryWrites=true&w=majority';
+  'mongodb+srv://root:abc.123@devconnector-ysjg1.mongodb.net/ignite-labs-todo?retryWrites=true&w=majority';
 
 // make mongodb connection on atlas
 mongoose
